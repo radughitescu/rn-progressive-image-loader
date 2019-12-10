@@ -19,13 +19,18 @@ const styles = StyleSheet.create({
   },
   text: {
     textAlign: 'center',
-    position: 'absolute',
-    width: '100%'
+    width: '100%',
+    maxHeight: 200
   }
 
 });
 
 class ProgressiveImage extends React.Component {
+
+  constructor(props) {
+    super(props)
+    this.state = { showPlaceholder: true }
+  }
   thumbnailAnimated = new Animated.Value(0);
 
   imageAnimated = new Animated.Value(0);
@@ -37,6 +42,7 @@ class ProgressiveImage extends React.Component {
   }
 
   onImageLoad = () => {
+    this.setState({ showPlaceholder: false });
     Animated.timing(this.imageAnimated, {
       toValue: 1,
     }).start();
@@ -50,6 +56,8 @@ class ProgressiveImage extends React.Component {
       ...props
     } = this.props;
 
+    const { showPlaceholder } = this.state;
+
     return (
       <View style={[styles.container]}>
         <SkeletonPlaceholder style={styles.text}>
@@ -57,20 +65,27 @@ class ProgressiveImage extends React.Component {
             style={{
               width: 100,
               height: 100,
-              position: 'absolute',
+              // position: 'absolute',
               top: 40,
               left: -50,
               borderWidth: 5,
-              borderColor: "white",
+              display: showPlaceholder ? 'flex' : 'none',
+              borderColor: showPlaceholder ? 'red' : 'white',
             }}
           />
-          <View style={{ width: 120, position: 'absolute', left: -60, height: 20, top: 150 }} />
+          <View style={{
+            width: 120,
+            display: showPlaceholder ? 'flex' : 'none',
+            borderColor: showPlaceholder ? 'red' : 'white',
+            left: -60, height: 20, top: 150
+          }} />
           <View
             style={{
               width: 240,
               height: 20,
               left: -110,
-              position: 'absolute',
+              display: showPlaceholder ? 'flex' : 'none',
+              borderColor: showPlaceholder ? 'red' : 'white',
               top: 180
             }}
           />

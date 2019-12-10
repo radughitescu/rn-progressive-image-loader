@@ -33,7 +33,7 @@ const App: () => React$Node = () => {
       <StatusBar barStyle="dark-content" />
       <SafeAreaView>
       <ProgressiveImage
-          thumbnailSource={{ uri: `https://images.pexels.com/photos/671557/pexels-photo-671557.jpeg?w=50&buster=${Math.random()}` }}
+          // thumbnailSource={{ uri: `https://images.pexels.com/photos/671557/pexels-photo-671557.jpeg?w=50&buster=${Math.random()}` }}
           source={{ uri: `https://images.pexels.com/photos/671557/pexels-photo-671557.jpeg?w=${w.width * 2}&buster=${Math.random()}` }}
           style={{ width: w.width, height: w.width }}
           resizeMode="cover"
@@ -50,6 +50,7 @@ const App: () => React$Node = () => {
           <View style={styles.body}>
             <View style={styles.sectionContainer}>
               <Text style={styles.sectionTitle}>Step One</Text>
+              <Text style={styles.sectionTitle2}>Step One</Text>
               <Text style={styles.sectionDescription}>
                 Edit <Text style={styles.highlight}>App.js</Text> to change this
                 screen and then come back to see your edits.
@@ -99,6 +100,13 @@ const styles = StyleSheet.create({
   sectionTitle: {
     fontSize: 24,
     fontWeight: '600',
+    // fontFamily:'RedHadDisplay-Regular',
+    color: Colors.black,
+  },
+  sectionTitle2: {
+    fontSize: 24,
+    fontWeight: '600',
+    fontFamily:'RedHatDisplay-Regular',
     color: Colors.black,
   },
   sectionDescription: {
